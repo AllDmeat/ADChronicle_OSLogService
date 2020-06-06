@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "ADChronicle",
+        "repositoryURL": "https://github.com/AllDmeat/ADChronicle",
+        "state": {
+          "branch": "develop",
+          "revision": "a9e9a1fe167a0fd4fac168f03dedcf3c0bf6c665",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
