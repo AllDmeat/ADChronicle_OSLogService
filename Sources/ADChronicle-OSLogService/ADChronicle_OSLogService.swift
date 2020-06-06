@@ -6,6 +6,8 @@ extension ADChronicle {
     @available(iOS 12.0, *)
     @available(OSX 10.14, *)
     public class OSLogService: ADLogServiceProtocol {
+        public init() { }
+        
         public func log(_ error: Error,
                         file: StaticString,
                         function: StaticString,
