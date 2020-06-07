@@ -2,9 +2,9 @@ import Foundation
 import ADChronicle
 import os
 
+@available(iOS 12.0, *)
+@available(OSX 10.14, *)
 extension ADChronicle {
-    @available(iOS 12.0, *)
-    @available(OSX 10.14, *)
     public class OSLogService: ADLogServiceProtocol {
         public init() { }
         
@@ -23,7 +23,7 @@ extension ADChronicle {
         
         public func log(_ message: String,
                         userInfo: CustomDebugStringConvertible?,
-                        logLevel: ADLogLevel,
+                        logLevel: OSLogType,
                         file: StaticString,
                         function: StaticString,
                         line: UInt) {
@@ -32,7 +32,7 @@ extension ADChronicle {
                 logger: logger(for: file),
                 file: file,
                 function: function,
-                logType: logLevel.osLogType)
+                logType: logLevel)
         }
     }
 }
@@ -89,19 +89,5 @@ extension ADChronicle.OSLogService {
     
     private func logger(subsystem: String, file: StaticString) -> OSLog {
         return OSLog(subsystem: subsystem, category: filename(from: file))
-    }
-}
-
-@available(iOS 12.0, *)
-@available(OSX 10.14, *)
-private extension ADLogLevel {
-    var osLogType: OSLogType {
-        switch self {
-        case .debug:    return .debug
-        case .info:     return .info
-        case .warning:  return .error
-        case .error:    return .error
-        case .default:  return .default
-        }
     }
 }
