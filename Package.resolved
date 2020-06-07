@@ -6,7 +6,16 @@
         "repositoryURL": "https://github.com/AllDmeat/ADChronicle",
         "state": {
           "branch": "develop",
-          "revision": "a9e9a1fe167a0fd4fac168f03dedcf3c0bf6c665",
+          "revision": "d306a6f5bfae84f06d380bd2eaa97a3fa8da92c5",
+          "version": null
+        }
+      },
+      {
+        "package": "ADChronicle-OSLogHelpers",
+        "repositoryURL": "https://github.com/AllDmeat/ADChronicle_OSLogHelpers",
+        "state": {
+          "branch": "develop",
+          "revision": "9870ee281306838796deb21c4f33099d6f93f5a5",
           "version": null
         }
       }
