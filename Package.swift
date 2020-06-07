@@ -21,9 +21,17 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "ADChronicle-OSLogService",
-            dependencies: ["ADChronicle", "ADChronicle-OSLogHelpers"]),
+            dependencies: [
+                "ADChronicle",
+                "ADChronicle-OSLogHelpers"
+            ]
+        ),
         .testTarget(
             name: "ADChronicle-OSLogServiceTests",
-            dependencies: ["ADChronicle-OSLogService"]),
+            dependencies: [
+                "ADChronicle",
+                "ADChronicle-OSLogService"
+            ]
+        ),
     ]
 )

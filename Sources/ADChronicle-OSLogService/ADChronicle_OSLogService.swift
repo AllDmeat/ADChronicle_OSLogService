@@ -19,12 +19,14 @@ extension ADChronicle {
                 logger: ADChronicle.logger(for: file),
                 file: file,
                 function: function,
-                logType: .error)
+                logType: .error,
+                signpostType: .event)
         }
         
         public func log(_ message: String,
                         userInfo: CustomDebugStringConvertible?,
-                        logLevel: OSLogType,
+                        logType: OSLogType,
+                        signpostType: OSSignpostType,
                         file: StaticString,
                         function: StaticString,
                         line: UInt) {
@@ -33,7 +35,8 @@ extension ADChronicle {
                 logger: ADChronicle.logger(for: file),
                 file: file,
                 function: function,
-                logType: logLevel)
+                logType: logType,
+                signpostType: signpostType)
         }
     }
 }
@@ -46,11 +49,20 @@ extension ADChronicle.OSLogService {
                      logger: OSLog,
                      file: StaticString,
                      function: StaticString,
-                     logType: OSLogType) {
+                     logType: OSLogType,
+                     signpostType: OSSignpostType) {
         let message = message + "\n\n" + "[User Info]:" + "\n" + ADChronicle.string(from: userInfo)
+        
+        let staticName: StaticString = function
+        let name = staticName.description
         
         os_log(logType,
                log: logger,
-               "%{public}@\n%{public}@", function.description, message)
+               "%{public}@\n%{public}@", name, message)
+        
+        os_signpost(signpostType,
+                    log: logger,
+                    name: staticName,
+                    "%{public}@", message)
     }
 }
